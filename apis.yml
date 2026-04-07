@@ -1,7 +1,12 @@
 aid: analog-devices
-url: https://raw.githubusercontent.com/api-evangelist/analog-devices/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/analog-devices/refs/heads/main/apis.yml
 modified: '2026-03-21'
 apis: []
 common:
   - type: Website
     url: https://www.analog-devices.com
+description: >-
+  Analog Devices is a global semiconductor company that designs, manufactures, and
+  markets a broad portfolio of high-performance analog, mixed-signal, and digital
+  signal processing integrated circuits.
