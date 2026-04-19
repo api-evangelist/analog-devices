@@ -1,0 +1,37 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "adi": "https://www.analog.com/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "IIODevice": "adi:IIODevice",
+    "IIOChannel": "adi:IIOChannel",
+    "IIOContext": "adi:IIOContext",
+    "name": "schema:name",
+    "description": "schema:description",
+    "id": {
+      "@id": "adi:id",
+      "@type": "xsd:string"
+    },
+    "label": {
+      "@id": "adi:label",
+      "@type": "xsd:string"
+    },
+    "channels": {
+      "@id": "adi:channels",
+      "@container": "@set"
+    },
+    "attrs": {
+      "@id": "adi:attrs",
+      "@type": "@id"
+    },
+    "scanElement": {
+      "@id": "adi:scan_element",
+      "@type": "xsd:boolean"
+    },
+    "devices": {
+      "@id": "adi:devices",
+      "@container": "@set"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+vocabulary: 1.0.0
+info:
+  provider: Analog Devices
+  description: Taxonomy for Analog Devices APIs and developer tools covering IIO devices, embedded SDKs, and hardware interfaces.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - name: libiio API
+    namespace: libiio
+    version: v0.25+
+    baseUrl: https://github.com/analogdevicesinc/libiio
+    status: active
+  - name: PyADI-IIO API
+    namespace: pyadi-iio
+    version: 0.0.19+
+    baseUrl: https://pypi.org/project/pyadi-iio/
+    status: active
+  - name: CodeFusion Studio
+    namespace: codefusion-studio
+    version: 1.0.2+
+    baseUrl: https://developer.analog.com
+    status: active
+  resources:
+  - name: IIO Devices
+    apis:
+    - libiio
+    - pyadi-iio
+    actions:
+    - list_devices
+    - open_device
+    - close_device
+  - name: IIO Channels
+    apis:
+    - libiio
+    - pyadi-iio
+    actions:
+    - read_channel
+    - write_channel
+    - enable_channel
+  - name: IIO Context
+    apis:
+    - libiio
+    actions:
+    - create_context
+    - destroy_context
+  schemas:
+    core:
+    - name: IIODevice
+    - name: IIOChannel
+    - name: IIOContext
+  sdks:
+  - name: libiio
+    language: C
+    url: https://github.com/analogdevicesinc/libiio
+  - name: pyadi-iio
+    language: Python
+    url: https://pypi.org/project/pyadi-iio/
+  - name: no-OS
+    language: C
+    url: https://github.com/analogdevicesinc/no-OS
+capability:
+  workflows: []
+  personas:
+  - id: embedded-engineer
+    name: Embedded Engineer
+    description: Developing firmware for ADI MCUs and DSPs
+  - id: signal-processing-engineer
+    name: Signal Processing Engineer
+    description: Using ADI transceivers and converters for RF and measurement applications
+  - id: data-scientist
+    name: Data Scientist
+    description: Using PyADI-IIO for data acquisition from ADI hardware
+  domains:
+  - Embedded Systems
+  - Signal Processing
+  - Industrial IoT
+  - RF Communications
+  - Hardware Security

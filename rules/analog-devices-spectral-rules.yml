@@ -1,0 +1,33 @@
+rules:
+  info-description-required:
+    description: All API info objects must have descriptions
+    severity: error
+    given: "$.info"
+    then:
+      field: description
+      function: truthy
+
+  operation-summary-required:
+    description: All operations must have summaries
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  operation-operationid-required:
+    description: All operations must have operationIds
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  servers-https-only:
+    description: All servers must use HTTPS
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"

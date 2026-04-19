@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/analog-devices/refs/heads/main/json-schema/analog-devices-iio-device-schema.json",
+  "title": "IIODevice",
+  "description": "Representation of a Linux IIO device as exposed by libiio",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Device name",
+      "example": "ad9361-phy"
+    },
+    "id": {
+      "type": "string",
+      "description": "Device identifier",
+      "example": "iio:device0"
+    },
+    "label": {
+      "type": "string",
+      "description": "Optional device label"
+    },
+    "channels": {
+      "type": "array",
+      "description": "List of IIO channels",
+      "items": {
+        "$ref": "#/$defs/IIOChannel"
+      }
+    },
+    "attrs": {
+      "type": "object",
+      "description": "Device-level attributes",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "IIOChannel": {
+      "type": "object",
+      "description": "An IIO channel (input or output)",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Channel identifier",
+          "example": "voltage0"
+        },
+        "name": {
+          "type": "string",
+          "description": "Channel name"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "input",
+            "output"
+          ],
+          "description": "Channel direction"
+        },
+        "scan_element": {
+          "type": "boolean",
+          "description": "Whether this is a scan element for buffered capture"
+        },
+        "attrs": {
+          "type": "object",
+          "description": "Channel attributes",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/analog-devices/refs/heads/main/json-schema/analog-devices-iio-context-schema.json",
+  "title": "IIOContext",
+  "description": "An IIO context representing a local or remote IIO system",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Context name (e.g., local, ip, usb)",
+      "example": "local"
+    },
+    "description": {
+      "type": "string",
+      "description": "Context description"
+    },
+    "xml_version": {
+      "type": "string",
+      "description": "IIO XML version"
+    },
+    "devices": {
+      "type": "array",
+      "description": "IIO devices in this context",
+      "items": {
+        "type": "object"
+      }
+    },
+    "attrs": {
+      "type": "object",
+      "description": "Context-level attributes",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}
