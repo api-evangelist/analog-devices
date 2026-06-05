@@ -13,6 +13,7 @@ tags:
   - IoT
   - Semiconductor
   - Signal Processing
+  - Fortune 1000
 apis:
   - aid: analog-devices:libiio-api
     name: Analog Devices libiio API
