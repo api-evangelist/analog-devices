@@ -6,7 +6,7 @@ description: Analog Devices (ADI) is a global semiconductor company designing hi
   automotive, and consumer markets. ADI provides developer tools through its CodeFusion Studio embedded development environment and the ADI Developer Portal. ADI's APIs are primarily embedded software
   APIs for microcontrollers and DSPs via the libiio library for Linux Industrial I/O devices, pyadi-iio Python interfaces, and security APIs within the ADI Assure Trusted Edge Security Architecture. 
   The company also maintains the no-OS driver library for bare-metal embedded systems.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Embedded Systems
   - Hardware
@@ -25,7 +25,7 @@ apis:
     - IIO
     - Linux
     - Signal Processing
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://github.com/analogdevicesinc/libiio
     humanURL: https://analogdevicesinc.github.io/libiio/
     properties:
@@ -43,7 +43,7 @@ apis:
     - Hardware
     - Python
     - RF
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://github.com/analogdevicesinc/pyadi-iio
     humanURL: https://analogdevicesinc.github.io/pyadi-iio/
     properties:
@@ -63,7 +63,7 @@ apis:
     - Microcontrollers
     - Security
     - VSCode
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://developer.analog.com
     humanURL: https://developer.analog.com/solutions/codefusionstudio
     properties:
