@@ -52,7 +52,7 @@ apis:
     - url: https://github.com/analogdevicesinc/pyadi-iio
       type: GitHubRepository
     - url: https://pypi.org/project/pyadi-iio/
-      type: SDK
+      type: SDKs
   - aid: analog-devices:codefusion-studio
     name: Analog Devices CodeFusion Studio
     description: CodeFusion Studio is ADI's embedded software development environment built on Visual Studio Code for ADI microcontrollers and DSPs. It provides graphical system configuration, code 
@@ -74,7 +74,7 @@ apis:
     - url: https://github.com/analogdevicesinc/codefusion-studio
       type: GitHubRepository
     - url: https://marketplace.visualstudio.com/items?itemName=AnalogDevices.cfs-ide
-      type: SDK
+      type: SDKs
 common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/analog-devices
