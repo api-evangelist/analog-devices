@@ -76,6 +76,8 @@ apis:
     - url: https://marketplace.visualstudio.com/items?itemName=AnalogDevices.cfs-ide
       type: SDKs
 common:
+  - type: DomainSecurity
+    url: security/analog-devices-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/analog-devices
   - type: Portal
