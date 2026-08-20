@@ -24,6 +24,13 @@ tags:
   - Embedded Systems
   - Hardware
   - IoT
+  - Semiconductors
+  - Signal Processing
+  - Fortune 1000
+tags_raw:
+  - Embedded Systems
+  - Hardware
+  - IoT
   - Semiconductor
   - Signal Processing
   - Fortune 1000
@@ -71,6 +78,12 @@ apis:
     description: CodeFusion Studio is ADI's embedded software development environment built on Visual Studio Code for ADI microcontrollers and DSPs. It provides graphical system configuration, code 
       generation, debugging, and security APIs for the ADI Assure Trusted Edge Security Architecture. Initially supports MAX32690 and ADSP-SC5xx processor families.
     tags:
+    - Embedded Development
+    - IDE
+    - Microcontrollers
+    - Security
+    - VS Code
+    tags_raw:
     - Embedded Development
     - IDE
     - Microcontrollers
