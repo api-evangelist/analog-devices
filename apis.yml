@@ -35,7 +35,7 @@ tags:
   - Embedded Systems
   - Hardware
   - IoT
-  - Semiconductor
+  - Semiconductors
   - Signal Processing
   - Fortune 1000
 tags_raw:
@@ -93,7 +93,7 @@ apis:
     - IDE
     - Microcontrollers
     - Security
-    - VSCode
+    - VS Code
     tags_raw:
     - Embedded Development
     - IDE
