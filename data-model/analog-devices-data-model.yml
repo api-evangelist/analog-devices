@@ -1,0 +1,100 @@
+generated: '2026-09-02'
+method: derived
+source: grpc/analog-devices-aditof-network.proto
+provider: Analog Devices
+providerId: analog-devices
+description: >-
+  Entity graph derived from the only machine-readable schema Analog Devices
+  publishes for a networked surface: the protobuf contract used by the 3D
+  Time-of-Flight SDK (libaditof / ADCAM) to carry commands and responses
+  between a host client and the camera-side server. Every entity and field
+  below is present in the .proto saved in grpc/; nothing is inferred.
+entities:
+  - name: ClientRequest
+    role: request envelope
+    description: >-
+      The command a host sends to the camera server. Carries the requested
+      function, its arguments, and the driver/mode configuration to apply.
+  - name: ServerResponse
+    role: response envelope
+    description: >-
+      The server's reply. Carries the operation Status, the ServerStatus
+      acknowledgement, and any payload the command produced.
+  - name: SensorsInfo
+    role: capability descriptor
+    description: Information about the depth sensors available on the device.
+  - name: ImagerInfo
+    role: identity
+    description: Names the imager on the device.
+    fields:
+      - name: name
+        type: string
+  - name: CardImageVersion
+    role: version descriptor
+    description: Firmware/OS versions running on the camera's SD card image.
+    fields:
+      - name: kernelversion
+        type: string
+      - name: sdversion
+        type: string
+      - name: ubootversion
+        type: string
+  - name: DriverConfiguration
+    role: configuration
+    description: Bit depths, pixel format and driver frame geometry.
+    fields:
+      - name: depthBits
+        type: string
+      - name: abBits
+        type: string
+      - name: confBits
+        type: string
+      - name: pixelFormat
+        type: string
+      - name: driverWidth
+        type: int32
+      - name: driverHeigth
+        type: int32
+        note: Field name is misspelled in the published proto; recorded verbatim.
+  - name: DepthSensorModeDetails
+    role: mode descriptor
+    description: The details of a selectable depth-sensor operating mode.
+relationships:
+  - from: SensorsInfo
+    to: ImagerInfo
+    type: has_one
+    via: image_sensors
+  - from: ClientRequest
+    to: DriverConfiguration
+    type: has_one
+    via: driver configuration carried on the request
+  - from: ServerResponse
+    to: SensorsInfo
+    type: has_one
+    via: sensor enumeration payload
+  - from: ServerResponse
+    to: CardImageVersion
+    type: has_one
+    via: version payload
+  - from: ServerResponse
+    to: DepthSensorModeDetails
+    type: has_many
+    via: available depth-sensor modes
+  - from: ServerResponse
+    to: Status
+    type: has_one
+    via: status
+    note: See errors/analog-devices-error-codes.yml
+other_models:
+  - name: IIO context model
+    note: >-
+      libiio's own object model — Context -> Device -> Channel -> Attribute /
+      Buffer / Block / Trigger — is documented in the libiio reference and is
+      serialisable as XML via iio_genxml, but ADI publishes no schema document
+      for it. The JSON Schema files already in this repo
+      (json-schema/analog-devices-iio-device-schema.json and
+      -iio-context-schema.json) are API Evangelist derivations, not ADI
+      artifacts, and are not claimed here as a provider data model.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

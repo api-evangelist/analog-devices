@@ -1,0 +1,74 @@
+generated: '2026-09-02'
+method: searched
+source: https://github.com/analogdevicesinc/codefusion-studio/tree/main/packages/cfs-skills
+provider: Analog Devices
+providerId: analog-devices
+description: >-
+  Analog Devices publishes its own Agent Skills. CodeFusion Studio ships two
+  skills — cfs-docs and cfs-cli — in packages/cfs-skills of the
+  analogdevicesinc/codefusion-studio repository, distributed as a Claude Code
+  plugin marketplace, bundled with the CFS VS Code extension for GitHub Copilot
+  Chat, and installable into any Agent Skills-compatible assistant via
+  `npx skills add`. Both SKILL.md files below are saved VERBATIM as published;
+  API Evangelist authored none of this content.
+publisher: Analog Devices, Inc.
+license: Apache-2.0
+plugin:
+  marketplace: analogdevicesinc/codefusion-studio
+  name: cfs-skills
+  version: 1.0.0
+  install:
+    claude_code:
+      - /plugin marketplace add analogdevicesinc/codefusion-studio
+      - /plugin install cfs-skills@adi-codefusion-studio
+    other_agents:
+      - npx skills add https://github.com/analogdevicesinc/codefusion-studio/tree/main/packages/cfs-skills
+    copilot: >-
+      Bundled with the CodeFusion Studio VS Code extension; requires VS Code
+      1.109 or later.
+  source: >-
+    https://raw.githubusercontent.com/analogdevicesinc/codefusion-studio/main/packages/cfs-skills/.claude-plugin/plugin.json
+skills:
+  - name: cfs-docs
+    file: analog-devices-cfs-docs.md
+    version: 1.0.0
+    api: Analog Devices CodeFusion Studio
+    invocation: /cfs-docs (or /cfs-skills:cfs-docs)
+    description: >-
+      Answers questions about installing, setting up, using and troubleshooting
+      CodeFusion Studio by reading the bundled documentation — the VS Code
+      extension, cfsutil CLI, System Planner, debug driver installation and
+      hardware connection (J-Link, Olimex, ICE), build/flash/debug workflows,
+      AI model integration, package manager, plugins and release notes.
+    source: >-
+      https://raw.githubusercontent.com/analogdevicesinc/codefusion-studio/main/packages/cfs-skills/cfs-docs/SKILL.md
+    bundled_references: true
+    note: >-
+      The published skill also ships a references/ directory of documentation
+      markdown that the skill loads on demand; only SKILL.md is mirrored here.
+  - name: cfs-cli
+    file: analog-devices-cfs-cli.md
+    api: Analog Devices CodeFusion Studio
+    invocation: /cfs-cli (or /cfs-skills:cfs-cli)
+    description: >-
+      Guidance on the cfsutil command-line utility — code generation from
+      .cfsconfig files, workspace and project management, SoC data model
+      queries, package and SDK installation, ELF analysis, AI model build /
+      profile / compatibility workflows, SoC catalog update and restore, device
+      tree parsing, Docker image pulls, myAnalog authentication including API
+      keys for headless CI/CD, serial port info, workspace tasks and CFS
+      plugins.
+    source: >-
+      https://raw.githubusercontent.com/analogdevicesinc/codefusion-studio/main/packages/cfs-skills/cfs-cli/SKILL.md
+docs: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/developer-tools/cfs-ai-skills/
+x-evidence:
+  fetched: '2026-09-02'
+  skill_docs_url: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/developer-tools/cfs-ai-skills/
+  skill_docs_status: 200
+  cfs_cli_status: 200
+  cfs_cli_bytes: 15870
+  cfs_docs_status: 200
+  cfs_docs_bytes: 18431
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

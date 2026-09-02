@@ -1,0 +1,140 @@
+generated: '2026-09-02'
+method: probed
+source: live HTTP probes of every host named in apis.yml, run 2026-09-02
+provider: Analog Devices
+providerId: analog-devices
+description: >-
+  No host operated by Analog Devices served a single /.well-known/ document on
+  this pass. Two of the four hosts could not be read at all: www.analog.com
+  resets the HTTP/2 stream for a non-browser client, and api.analog.com answers
+  every path with an Akamai "Web App - Unavailable" 403. The developer portal
+  answers 200 with the same Next.js HTML shell for every path INCLUDING the
+  negative control, so none of its 200s are documents.
+hit_count: 0
+hosts:
+  - host: https://developer.analog.com
+    soft_404_control:
+      path: /.well-known/adi-negative-control-7f3ab91c.json
+      status: 200
+      bytes: 46744
+      content_type: text/html
+      verdict: >-
+        CATCH-ALL. A path that cannot exist returned 200 with the same 45-47KB
+        Next.js HTML shell as every real path, so every 200 on this host is a
+        shell, not a document. No file was saved and no pointer is emitted.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: null
+        note: HTML shell (46700 bytes, text/html) — not a document
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: null
+        note: HTML shell — not a document
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: null
+        note: HTML shell — not a document
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        file: null
+        note: HTML shell — not a document
+      - path: /.well-known/api-catalog
+        status: 200
+        file: null
+        note: HTML shell — not a document
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        file: null
+        note: HTML shell — not a document
+      - path: /.well-known/agent-card.json
+        status: 200
+        file: null
+        note: HTML shell — not a document; rejected per the A2A probe rules
+      - path: /.well-known/agent.json
+        status: 200
+        file: null
+        note: HTML shell — not a document; rejected per the A2A probe rules
+      - path: /.well-known/aauth-resource.json
+        status: 200
+        file: null
+        note: HTML shell — no issuer/jwks_uri; not an AAuth resource
+  - host: https://api.analog.com
+    note: >-
+      Real ADI API host (san-api.analog.com.edgekey.net on Akamai) but every
+      request from this client returns HTTP 403 with the Akamai "Web App -
+      Unavailable" interstitial, including the negative control.
+    soft_404_control:
+      path: /.well-known/adi-negative-control-7f3ab91c.json
+      status: 403
+      bytes: 2005
+      verdict: uniformly gated — no document readable anonymously
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 403
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+        file: null
+      - path: /.well-known/oauth-protected-resource
+        status: 403
+        file: null
+      - path: /.well-known/api-catalog
+        status: 403
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 403
+        file: null
+      - path: /.well-known/agent.json
+        status: 403
+        file: null
+      - path: /.well-known/aauth-resource.json
+        status: 403
+        file: null
+  - host: https://www.analog.com
+    note: >-
+      Unreachable from this client. curl returns exit 92 (HTTP/2 stream 1 was
+      not closed cleanly: INTERNAL_ERROR) and, on HTTP/1.1, times out with zero
+      bytes. This is an edge bot policy on the corporate site, not a dead host —
+      the site demonstrably exists and is linked from every ADI property.
+    documents:
+      - path: /.well-known/security.txt
+        status: null
+        file: null
+        note: '<no response> — connection reset by the edge before any bytes'
+      - path: /.well-known/openid-configuration
+        status: null
+        file: null
+        note: '<no response>'
+      - path: /.well-known/api-catalog
+        status: null
+        file: null
+        note: '<no response>'
+      - path: /.well-known/agent-card.json
+        status: null
+        file: null
+        note: '<no response>'
+  - host: https://analogdevicesinc.github.io
+    note: >-
+      GitHub Pages host serving the libiio, pyadi-iio and ltspice-reference
+      documentation. Honest 404s — this host is readable and serves nothing at
+      the well-known paths.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+pointers_emitted: []
+pointer_note: >-
+  No WellKnown and no SecurityTxt pointer is wired into apis.yml. Every 200
+  observed was an SPA shell (proved by the negative control) and every other
+  probe was a 403, a 404, or no response at all. A pointer here would assert a
+  surface Analog Devices does not serve.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

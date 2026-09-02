@@ -1,0 +1,42 @@
+generated: '2026-09-02'
+method: searched
+source: https://github.com/analogdevicesinc/libaditof/blob/main/sdk/src/connections/network/buffer.proto
+provider: Analog Devices
+providerId: analog-devices
+description: >-
+  Protobuf contracts published by Analog Devices. Saved verbatim — the .proto
+  file is byte-for-byte as ADI publishes it, with no added comments, so this
+  index carries the provenance instead.
+protos:
+  - file: analog-devices-aditof-network.proto
+    name: ADI Time-of-Flight network payload contract
+    syntax: proto3
+    package: payload
+    source_repo: https://github.com/analogdevicesinc/libaditof
+    source_path: sdk/src/connections/network/buffer.proto
+    raw_url: https://raw.githubusercontent.com/analogdevicesinc/libaditof/main/sdk/src/connections/network/buffer.proto
+    http_status: 200
+    bytes: 3457
+    fetched: '2026-09-02'
+    description: >-
+      The wire contract for the ADI 3D Time-of-Flight SDK's network connection:
+      a host client sends a ClientRequest to the server running on the camera
+      and receives a ServerResponse. Defines the Status and ServerStatus enums,
+      the imager/sensor/version descriptors and the driver configuration.
+    services: 0
+    messages: 7
+    enums: 2
+    note: >-
+      Messages and enums only — no `service`/`rpc` blocks. ADI serialises these
+      payloads over its own network transport rather than over gRPC, so this is
+      a Protobuf contract, not a gRPC service definition.
+    duplicated_in:
+      - 'https://github.com/analogdevicesinc/ADCAM (apps/server/buffer.proto)'
+      - 'https://github.com/analogdevicesinc/ToF (apps/server/buffer.proto)'
+      - 'https://github.com/analogdevicesinc/aditof_sdk (three copies)'
+    duplication_note: >-
+      The same contract is vendored across ADI's ToF repositories. libaditof
+      is the library home and was taken as canonical.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

@@ -1,0 +1,97 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  https://developer.analog.com/docs/codefusion-studio/latest/user-guide/cfsutil/apikey-auth/,
+  .../user-guide/cfsutil/myanalog-auth/ and
+  .../user-guide/installation/package-manager/auth/
+provider: Analog Devices
+providerId: analog-devices
+description: >-
+  Most Analog Devices developer software carries no authentication at all —
+  libiio, pyadi-iio and no-OS are local libraries that talk to silicon over
+  USB, SPI, I2C or a network daemon, and the iiod daemon has no built-in
+  authentication (the published guidance is to wrap it in stunnel). The one
+  real authentication surface ADI documents is myAnalog, which gates the
+  CodeFusion Studio Package Manager's restricted package remotes. It supports
+  an interactive browser login and, for CI/CD, long-lived API keys managed
+  through cfsutil.
+schemes:
+  - id: myanalog-interactive
+    type: browser-redirect
+    name: myAnalog interactive login
+    description: >-
+      cfsutil or the VS Code Command Palette opens an external browser at the
+      myAnalog sign-in page; on success the session is written back to the
+      client and the managed package remotes are configured automatically.
+    identity_providers:
+      - Email and password (myAnalog account, register at analog.com/myAnalog)
+      - Google Account
+      - LinkedIn Account
+      - Analog Devices Account (employees and contractors on managed devices)
+    commands:
+      - cfsutil myanalog login [--verbose]
+      - cfsutil myanalog status [--verbose]
+      - cfsutil myanalog logout
+    command_palette:
+      - (CFS) myAnalog Login
+      - (CFS) myAnalog Status
+    docs: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/installation/package-manager/auth/
+    note: >-
+      ADI does not publish an OAuth authorization-server metadata document,
+      token endpoint, or scope reference for this flow — /.well-known/
+      openid-configuration and /oauth-authorization-server were probed on
+      developer.analog.com (SPA shell), api.analog.com (403) and
+      www.analog.com (no response). The flow is documented in prose only, so
+      no scopes/ artifact is emitted.
+  - id: cfs-api-key
+    type: apiKey
+    in: environment
+    name: CFS_API_KEY
+    description: >-
+      Long-lived API key for non-interactive use in automated workflows and
+      CI/CD pipelines. The key value is displayed exactly once at creation and
+      cannot be retrieved afterwards.
+    supported_by: cfsutil only — the VS Code extension does not accept API keys
+    commands:
+      - cfsutil myanalog apikey create [--description <description>]
+      - cfsutil myanalog apikey list
+      - cfsutil myanalog apikey delete <key-id>
+    key_id_format: apikey_<id>
+    usage: 'CFS_API_KEY=<your-api-key> cfsutil catalog update'
+    covered_commands:
+      - catalog update
+      - ai build
+      - docker pull
+      - package manager commands
+    lifecycle:
+      creation_requires: an active myAnalog session (cfsutil myanalog login)
+      listing_shows: key id, masked value, expiration date
+      revocation: cfsutil myanalog apikey delete <key-id>
+      expiration: >-
+        Keys carry an expiration date shown by `apikey list`; the documentation
+        does not state the default lifetime.
+    docs: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/cfsutil/apikey-auth/
+unauthenticated_surfaces:
+  - name: libiio local context
+    note: >-
+      Local, USB and XML contexts require no credentials; access is governed by
+      OS device permissions.
+  - name: iiod network daemon
+    note: >-
+      The libiio server daemon exposes an IIO context over the network with no
+      built-in authentication. The published mitigation is to encrypt and front
+      it with stunnel — see "Encrypting Connections to iiod with stunnel" in the
+      libiio documentation.
+  - name: pyadi-iio
+    note: Wraps libiio contexts; inherits the same no-credential model.
+gated_surfaces:
+  - host: api.analog.com
+    note: >-
+      A real ADI API host (Akamai) that returns 403 for every anonymous request,
+      including /.well-known/*. Its authentication model is not published
+      anywhere this pass could read; the corporate site page that describes
+      ADI's API suites (www.analog.com/en/support/api-suites.html) could not be
+      fetched — the edge reset the connection.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

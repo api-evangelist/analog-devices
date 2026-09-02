@@ -1,0 +1,162 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  PyPI JSON API (pypi.org/pypi/<pkg>/json), GitHub Releases API for
+  github.com/analogdevicesinc, and the Visual Studio Marketplace
+  extensionquery API — all queried unauthenticated on 2026-09-02.
+provider: Analog Devices
+providerId: analog-devices
+description: >-
+  Analog Devices distributes its developer software as open-source embedded
+  libraries and desktop tooling rather than as hosted-API client SDKs. The
+  first-party distribution channels are PyPI (Python bindings for the IIO and
+  JESD tooling), the Visual Studio Marketplace (the CodeFusion Studio IDE
+  extension), and GitHub Releases (libiio, no-OS, Scopy, CodeFusion Studio).
+  There is no npm, crates.io, Maven Central, NuGet, RubyGems or Packagist
+  package published by Analog Devices that this pass could find.
+packages:
+  - language: python
+    registry: pypi
+    name: pyadi-iio
+    url: https://pypi.org/project/pyadi-iio/
+    install: pip install pyadi-iio
+    official: true
+    version: 0.0.21
+    published: '2026-05-26'
+    repository: https://github.com/analogdevicesinc/pyadi-iio
+    documentation: https://analogdevicesinc.github.io/pyadi-iio/
+    note: >-
+      Device-specific Python interfaces for ADI hardware with Linux IIO
+      drivers. Current and actively released.
+  - language: python
+    registry: pypi
+    name: pyadi-jif
+    url: https://pypi.org/project/pyadi-jif/
+    install: pip install pyadi-jif
+    official: true
+    version: 0.1.8
+    published: '2026-08-18'
+    repository: https://github.com/analogdevicesinc/pyadi-jif
+    note: >-
+      Python interface and configurator for the ADI JESD Interface Framework
+      (JESD204B/C clocking and link configuration).
+  - language: python
+    registry: pypi
+    name: adi-doctools
+    url: https://pypi.org/project/adi-doctools/
+    install: pip install adi-doctools
+    official: true
+    version: 0.4.47
+    published: '2026-09-02'
+    repository: https://github.com/analogdevicesinc/doctools
+    note: >-
+      ADI's Sphinx extensions and documentation theme — the toolchain behind
+      developer.analog.com/docs. Released the same day as this probe.
+  - language: python
+    registry: pypi
+    name: pylibiio
+    url: https://pypi.org/project/pylibiio/
+    install: pip install pylibiio
+    official: true
+    version: '0.25'
+    published: '2023-08-10'
+    repository: https://github.com/analogdevicesinc/libiio
+    note: >-
+      DECAY SIGNAL. The official Python bindings for libiio were last published
+      to PyPI on 2023-08-10 at 0.25, while the last tagged libiio release is
+      v0.26 (2024-09-25) and the published documentation at
+      analogdevicesinc.github.io/libiio/main/ already describes the v1.0 API.
+      A consumer installing pylibiio from PyPI gets bindings two API
+      generations behind the documented library.
+  - language: typescript
+    registry: vscode-marketplace
+    name: AnalogDevices.cfs-ide
+    url: https://marketplace.visualstudio.com/items?itemName=AnalogDevices.cfs-ide
+    install: code --install-extension AnalogDevices.cfs-ide
+    official: true
+    version: 2.3.0
+    published: '2026-08-14'
+    repository: https://github.com/analogdevicesinc/codefusion-studio
+    note: >-
+      CodeFusion Studio IDE extension. Version and last-updated date read from
+      the Visual Studio Marketplace extensionquery API.
+  - language: c
+    registry: github-releases
+    name: libiio
+    url: https://github.com/analogdevicesinc/libiio/releases
+    install: 'build from source; distro packages and installers on the release page'
+    official: true
+    version: v0.26
+    published: '2024-09-25'
+    repository: https://github.com/analogdevicesinc/libiio
+    documentation: https://analogdevicesinc.github.io/libiio/main/
+    note: >-
+      libiio has no package-registry distribution; releases are GitHub release
+      assets. The last tagged release is v0.26 (2024-09-25) even though the
+      documentation site publishes a v1.0 API reference and a "0.x to 1.x API
+      update guide" — v1.0 is documented but not yet tagged.
+  - language: c
+    registry: github-releases
+    name: no-OS
+    url: https://github.com/analogdevicesinc/no-OS/releases
+    install: 'build from source (bare-metal drivers, vendored into firmware projects)'
+    official: true
+    version: last_commit
+    published: '2026-07-02'
+    repository: https://github.com/analogdevicesinc/no-OS
+    note: >-
+      no-OS uses a rolling `last_commit` release tag rather than semantic
+      versions, so there is no stable version string to record.
+  - language: c++
+    registry: github-releases
+    name: scopy
+    url: https://github.com/analogdevicesinc/scopy/releases
+    install: 'download the installer from the release page'
+    official: true
+    version: v2.2.1
+    published: '2026-07-13'
+    repository: https://github.com/analogdevicesinc/scopy
+  - language: typescript
+    registry: github-releases
+    name: codefusion-studio
+    url: https://github.com/analogdevicesinc/codefusion-studio/releases
+    install: 'download the CFS installer, or install the cfs-ide VS Code extension'
+    official: true
+    version: V2.3.0
+    published: '2026-08-14'
+    repository: https://github.com/analogdevicesinc/codefusion-studio
+  - language: javascript
+    registry: npm
+    name: libiio
+    url: https://www.npmjs.com/package/libiio
+    install: npm install libiio
+    official: false
+    version: 0.4.0
+    published: '2019-08-03'
+    note: >-
+      NOT first-party. Published by npm user `drom`, unaffiliated with Analog
+      Devices, and unmaintained since 2019. Recorded so a later pass does not
+      mistake it for an ADI SDK.
+bindings_without_packages:
+  - name: libiio C# bindings
+    documentation: https://analogdevicesinc.github.io/libiio/main/
+    note: >-
+      Documented in the libiio reference but not published to NuGet — probed
+      api.nuget.org for `libiio` on 2026-09-02 and got 404.
+  - name: libiio C++ bindings
+    documentation: https://analogdevicesinc.github.io/libiio/main/
+    note: Shipped in-tree with libiio; no separate package registry entry.
+registries_probed:
+  - registry: pypi
+    result: 4 first-party packages
+  - registry: npm
+    result: no first-party package (one unaffiliated `libiio` package found)
+  - registry: nuget
+    result: 404 for libiio
+  - registry: vscode-marketplace
+    result: 1 first-party extension (AnalogDevices.cfs-ide)
+  - registry: github-releases
+    result: 4 first-party release streams
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

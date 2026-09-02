@@ -1,0 +1,123 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  https://developer.analog.com/docs/codefusion-studio/latest/user-guide/cfsutil/
+  and https://analogdevicesinc.github.io/libiio/main/
+provider: Analog Devices
+providerId: analog-devices
+description: >-
+  Analog Devices ships two first-party command-line surfaces: cfsutil, the
+  CodeFusion Studio utility that drives workspace, package, SoC, ELF and AI
+  model workflows and holds the only documented authentication surface ADI
+  publishes; and the libiio command-line tools, which read and write IIO
+  device attributes and buffers over USB, local and network transports.
+clis:
+  - name: cfsutil
+    alias: cfs
+    api: Analog Devices CodeFusion Studio
+    docs: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/cfsutil/
+    version: 2.3.0
+    install:
+      - method: bundled
+        note: >-
+          Installed with CodeFusion Studio. Run from the CFS Terminal in VS Code,
+          or from the system path.
+      - method: path
+        windows: <CFS-Install>/Utils/cfsutil/bin/cfsutil.cmd
+        linux: <CFS-Install>/Utils/cfsutil/bin/cfsutil
+        macos: <CFS-Install>/Utils/cfsutil/bin/cfsutil
+    help: 'cfsutil --help (hierarchical: cfsutil ai --help, cfsutil ai build --help)'
+    command_groups:
+      - name: ai
+        description: >-
+          Compile AI models, analyze compatibility, profile resources and manage
+          models within a workspace.
+        commands:
+          - cfsutil ai backends list
+          - cfsutil ai build
+      - name: cfs-plugins
+        description: List and manage CFS plugins.
+      - name: catalog
+        description: Update or restore the SoC catalog.
+        commands:
+          - cfsutil catalog update
+      - name: device-tree
+        description: Parse and work with device tree files.
+      - name: docker
+        description: Pull Docker images.
+      - name: elf
+        description: Analyze and inspect ELF files.
+      - name: generate
+        description: Generate source code from configuration files.
+      - name: myanalog
+        description: >-
+          Authenticate with myAnalog for package access, and create/list/delete
+          API keys for automated workflows.
+        commands:
+          - cfsutil myanalog login [--verbose]
+          - cfsutil myanalog logout
+          - cfsutil myanalog status [--verbose]
+          - cfsutil myanalog apikey create [--description <description>]
+          - cfsutil myanalog apikey list
+          - cfsutil myanalog apikey delete <key-id>
+        aliases:
+          - cfsutil auth login
+          - cfsutil auth logout
+          - cfsutil auth status
+      - name: package-manager
+        description: Install and manage SDKs, plugins and toolchains.
+      - name: plugins
+        description: Extend CFSUtil with additional CLI plugins.
+      - name: port
+        description: Information about active serial ports.
+      - name: project
+        description: Create and manage projects within workspaces.
+      - name: socs
+        description: List, query and export SoC data models.
+      - name: tasks
+        description: List and run workspace tasks.
+      - name: workspace
+        description: Create and manage CFS workspaces.
+    environment:
+      - name: CFS_API_KEY
+        description: >-
+          API key used for non-interactive authentication. Supported by
+          `catalog update`, `ai build`, `docker pull` and the package manager
+          commands.
+    note: >-
+      cfsutil is the only ADI surface in this repo with a documented
+      authentication model. The VS Code extension does not support API key
+      authentication — keys are a cfsutil-only feature for CI/CD.
+  - name: libiio command-line tools
+    api: Analog Devices libiio API
+    docs: https://analogdevicesinc.github.io/libiio/main/
+    version: v0.26
+    install:
+      - method: source
+        note: Built with libiio; also shipped in distro packages and release installers.
+    commands:
+      - name: iio_info
+        description: Enumerate an IIO context and print devices, channels and attributes.
+      - name: iio_attr
+        description: Read and write device, channel, buffer and debug attributes.
+      - name: iio_genxml
+        description: Generate the XML description of an IIO context.
+      - name: iio_rwdev
+        description: Read from or write to an IIO device buffer.
+      - name: iio_reg
+        description: Read and write device registers directly.
+      - name: iio_stresstest
+        description: Stress-test an IIO context and its transport.
+      - name: iiod
+        description: >-
+          The libiio server daemon — exposes a local IIO context over the
+          network so remote hosts can drive the hardware. Connections can be
+          encrypted with stunnel per the published guide.
+    legacy_commands:
+      - name: iio_readdev
+        note: Documented under the Python bindings examples; superseded by iio_rwdev in 1.x.
+      - name: iio_writedev
+        note: Documented under the Python bindings examples; superseded by iio_rwdev in 1.x.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

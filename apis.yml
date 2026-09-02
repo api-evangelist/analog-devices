@@ -24,7 +24,8 @@ accessModel:
   - plans
   generated: '2026-07-22'
   method: derived
-modified: '2026-04-19'
+created: '2026-05-03'
+modified: '2026-09-02'
 name: Analog Devices
 description: Analog Devices (ADI) is a global semiconductor company designing high-performance analog, mixed-signal, and digital signal processing integrated circuits for industrial, communications, 
   automotive, and consumer markets. ADI provides developer tools through its CodeFusion Studio embedded development environment and the ADI Developer Portal. ADI's APIs are primarily embedded software
@@ -106,13 +107,49 @@ apis:
     properties:
     - url: https://developer.analog.com/solutions/codefusionstudio
       type: Documentation
-    - url: https://developer.analog.com/docs/codefusion-studio/1.0.2/
+    - url: https://developer.analog.com/docs/codefusion-studio/latest/
       type: APIReference
     - url: https://github.com/analogdevicesinc/codefusion-studio
       type: GitHubRepository
     - url: https://marketplace.visualstudio.com/items?itemName=AnalogDevices.cfs-ide
       type: SDKs
+    - url: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/installation/
+      type: GettingStarted
+    - url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/
+      type: ChangeLog
+    - url: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/developer-tools/cfs-ai-skills/
+      type: AgentSkill
+    - url: cli/analog-devices-cli.yml
+      type: CLI
+  - aid: analog-devices:aditof-sdk
+    name: Analog Devices 3D Time-of-Flight SDK
+    description: The ADI 3D Time-of-Flight SDK (libaditof, and the ADCAM application layer built on
+      it) drives ADI depth cameras from a host. Its network connection is defined by a published
+      proto3 contract, in which a host client sends a ClientRequest to the server running on the
+      camera and receives a ServerResponse carrying imager, sensor-mode, driver-configuration and
+      firmware-version payloads plus a Status enum. It is the only machine-readable network contract
+      Analog Devices publishes.
+    tags:
+    - 3D Imaging
+    - Depth Sensing
+    - Embedded Systems
+    - Protobuf
+    - Time of Flight
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+    baseURL: https://github.com/analogdevicesinc/libaditof
+    humanURL: https://github.com/analogdevicesinc/libaditof
+    properties:
+    - url: https://github.com/analogdevicesinc/libaditof
+      type: GitHubRepository
+    - url: grpc/analog-devices-aditof-network.proto
+      type: Protobuf
+    - url: data-model/analog-devices-data-model.yml
+      type: DataModel
+    - url: errors/analog-devices-error-codes.yml
+      type: ErrorCatalog
 common:
+  - type: Website
+    url: https://www.analog.com/
   - type: DomainSecurity
     url: security/analog-devices-domain-security.yml
   - type: LinkedIn
@@ -126,7 +163,7 @@ common:
   - type: GitHubOrganization
     url: https://github.com/analogdevicesinc
   - type: Blog
-    url: https://www.analog.com/en/resources/media-center/analog-dialogue.html
+    url: https://www.analog.com/en/resources/analog-dialogue.html
   - type: Support
     url: https://ez.analog.com/
   - type: Features
@@ -177,6 +214,51 @@ common:
     url: vocabulary/analog-devices-vocabulary.yaml
   - type: SpectralRules
     url: rules/analog-devices-spectral-rules.yml
+  - type: Packages
+    url: packages/analog-devices-packages.yml
+  - type: SDKs
+    url: packages/analog-devices-packages.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Authentication
+    url: authentication/analog-devices-authentication.yml
+  - type: Conventions
+    url: conventions/analog-devices-conventions.yml
+  - type: Conformance
+    url: conformance/analog-devices-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/analog-devices-lifecycle.yml
+  - type: ChangeLog
+    url: changelog/analog-devices-changelog.yml
+  - type: CLI
+    url: cli/analog-devices-cli.yml
+  - type: ErrorCatalog
+    url: errors/analog-devices-error-codes.yml
+  - type: DataModel
+    url: data-model/analog-devices-data-model.yml
+  - type: Protobuf
+    url: grpc/analog-devices-aditof-network.proto
+  - type: LLMsTxt
+    url: llms/analog-devices-llms.txt
+  - type: LLMsTxt
+    url: https://analogdevicesinc.github.io/ltspice-reference/llms.txt
+  - type: RateLimits
+    url: rate-limits/analog-devices-rate-limits.yml
+  - type: Plans
+    url: plans/analog-devices-plans-pricing.yml
+  - type: FinOps
+    url: finops/analog-devices-finops.yml
+  - type: APIReference
+    url: https://developer.analog.com/docs/codefusion-studio/latest/
+  - type: GettingStarted
+    url: https://developer.analog.com/documentation
+  - type: PrivacyPolicy
+    url: https://www.analog.com/en/who-we-are/legal-and-risk-oversight/data-privacy/privacy-policy.html
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-02'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1

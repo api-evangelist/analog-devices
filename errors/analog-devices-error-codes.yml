@@ -1,0 +1,88 @@
+generated: '2026-09-02'
+method: derived
+source: grpc/analog-devices-aditof-network.proto
+provider: Analog Devices
+providerId: analog-devices
+format: protobuf-enum
+description: >-
+  Analog Devices publishes no HTTP API and therefore no RFC 9457 problem-type
+  catalog. The one machine-readable error vocabulary ADI does publish is the
+  Status / ServerStatus enum pair in the protobuf contract that carries the 3D
+  Time-of-Flight SDK's network protocol between an ADCAM/libaditof client and
+  the on-camera server. The proto states that this list "must match precisely
+  the Status list from status_definitions.h", so it is the canonical SDK-wide
+  status vocabulary, not just a wire detail.
+envelope:
+  message: ServerResponse
+  fields:
+    - name: status
+      type: Status
+      description: Outcome of the requested operation.
+    - name: server_status
+      type: ServerStatus
+      description: Whether the server recognised and accepted the request at all.
+error_codes:
+  - code: 0
+    name: OK
+    enum: Status
+    meaning: The operation completed successfully.
+    action: none
+  - code: 1
+    name: BUSY
+    enum: Status
+    meaning: The target is occupied and cannot service the request right now.
+    action: Retry after the in-flight operation completes; do not treat as fatal.
+  - code: 2
+    name: UNREACHABLE
+    enum: Status
+    meaning: The device or endpoint could not be reached.
+    action: >-
+      Check the transport (network link to the camera server, USB connection)
+      before retrying.
+  - code: 3
+    name: INVALID_ARGUMENT
+    enum: Status
+    meaning: One or more arguments in the request were not valid.
+    action: Fix the caller; retrying an identical request will fail identically.
+  - code: 4
+    name: UNAVAILABLE
+    enum: Status
+    meaning: The requested capability or resource is not available.
+    action: >-
+      Verify the sensor mode / driver configuration is supported by the attached
+      hardware.
+  - code: 5
+    name: GENERIC_ERROR
+    enum: Status
+    meaning: Unclassified failure.
+    action: >-
+      Inspect the SDK log. This is the catch-all bucket, so an agent cannot
+      infer remediation from the code alone.
+  - code: 0
+    name: REQUEST_ACCEPTED
+    enum: ServerStatus
+    meaning: The server recognised the request and accepted it for processing.
+    action: none
+  - code: 1
+    name: REQUEST_UNKNOWN
+    enum: ServerStatus
+    meaning: The server did not recognise the request.
+    action: >-
+      Check client/server version skew — the client is speaking a command the
+      server build does not implement.
+other_error_surfaces:
+  - name: libiio
+    style: negative errno
+    note: >-
+      libiio functions return negative POSIX errno values (and iio_err /
+      iio_strerror helpers in 1.x). The published API reference documents these
+      per function rather than as a central registry, so no catalog is derived
+      here rather than inventing one.
+    docs: https://analogdevicesinc.github.io/libiio/main/
+coverage_note: >-
+  No error reference was found for cfsutil or the myAnalog package remotes; the
+  CodeFusion Studio documentation covers troubleshooting in prose without an
+  enumerated code list.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

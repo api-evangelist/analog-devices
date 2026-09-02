@@ -1,0 +1,52 @@
+generated: '2026-09-02'
+method: searched
+status: none-published
+provider: Analog Devices
+providerId: analog-devices
+source: >-
+  DNS + HTTP probes of mcp.analog.com, mcp.developer.analog.com,
+  developer.analog.com/mcp, and a code search of the analogdevicesinc GitHub
+  organization, all on 2026-09-02.
+description: >-
+  Analog Devices publishes no MCP server — hosted or local. This is a recorded
+  absence, not a candidate manifest: with no OpenAPI, GraphQL or other
+  machine-readable operation list anywhere in ADI's surface, there is nothing
+  to derive candidate tools from, and inventing them would fabricate an agent
+  surface ADI does not offer.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+tools: []
+probes:
+  - target: mcp.analog.com
+    method: dns
+    result: NXDOMAIN
+  - target: mcp.developer.analog.com
+    method: dns
+    result: NXDOMAIN
+  - target: https://developer.analog.com/mcp
+    method: http
+    status: 200
+    result: >-
+      Next.js SPA shell (45335 bytes of HTML), identical to the shell returned
+      for a negative-control path — not an MCP endpoint.
+  - target: 'github code search: org:analogdevicesinc mcp server'
+    method: search
+    result: no MCP server implementation found
+adjacent_agent_surface:
+  note: >-
+    ADI's agent-facing investment went into Agent Skills rather than MCP.
+    CodeFusion Studio 2.3.0 ships two published skills (cfs-docs, cfs-cli)
+    distributed as a Claude Code plugin and bundled into GitHub Copilot Chat —
+    see skills/_index.yml. An MCP server would be the natural complement and
+    does not yet exist.
+pointer_note: >-
+  No MCPServer pointer is wired into apis.yml. The artifact records an absence;
+  a pointer would claim a server that does not exist.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

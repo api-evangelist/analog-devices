@@ -1,0 +1,84 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  https://developer.analog.com/docs/codefusion-studio/latest/release-notes/2.3.0/
+  and the GitHub Releases API for github.com/analogdevicesinc
+provider: Analog Devices
+providerId: analog-devices
+description: >-
+  CodeFusion Studio is the one Analog Devices product with a dated, per-version
+  release-notes tree published on the developer portal — eleven versions from
+  1.0.0 through 2.3.0. The other projects publish GitHub releases instead.
+scheme: semver
+current_version: 2.3.0
+changelog_url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/
+entries:
+  - version: 2.3.0
+    date: '2026-08-14'
+    product: CodeFusion Studio
+    source_tag: V2.3.0
+    breaking: false
+    highlights:
+      - >-
+        Model Zoo for discovering and deploying AI models, expanding
+        AI-assisted embedded development.
+      - >-
+        Documentation-backed AI assistant skills (cfs-docs, cfs-cli) answering
+        product questions directly in the editor — see skills/.
+      - >-
+        Zephelin profiling now captures traces over USB as well as UART, for
+        deeper insight into AI inference performance on hardware.
+      - Graphical Package Manager for browsing, filtering and installing packages.
+      - >-
+        Expanded workspace template library across MAX32655, MAX32657,
+        MAX32658, MAX32666, MAX32672, MAX32690 and MAX78000 processors
+        (MSDK and Zephyr single-core templates for AES, Coremark, CRC, CTB AES,
+        ECC, Flash, GPIO, Hash, RTC Backup, SPI, ADC Devicetree, Eventfd,
+        Hello World User, LVGL Basic and UART Async API).
+      - >-
+        Usability improvements across the Workspace Creation Wizard, System
+        Planner and debug tools.
+    url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/2.3.0/
+  - version: 2.2.1
+    product: CodeFusion Studio
+    url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/2.2.1/
+  - version: 2.2.0
+    product: CodeFusion Studio
+    url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/2.2.0/
+  - version: 2.1.0
+    product: CodeFusion Studio
+    url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/2.1.0/
+  - version: 2.0.2
+    product: CodeFusion Studio
+    url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/2.0.2/
+  - version: 2.0.1
+    product: CodeFusion Studio
+    url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/2.0.1/
+  - version: 2.0.0
+    product: CodeFusion Studio
+    url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/2.0.0/
+  - version: 1.1.0
+    product: CodeFusion Studio
+    url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/1.1.0/
+  - version: 1.0.2
+    product: CodeFusion Studio
+    url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/1.0.2/
+  - version: 1.0.0
+    product: CodeFusion Studio
+    url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/1.0.0/
+  - version: v2.2.1
+    date: '2026-07-13'
+    product: Scopy
+    url: https://github.com/analogdevicesinc/scopy/releases
+  - version: v0.26
+    date: '2024-09-25'
+    product: libiio
+    url: https://github.com/analogdevicesinc/libiio/releases
+    note: Newest tagged libiio release; the docs already describe an untagged v1.0.
+note: >-
+  Only the 2.3.0 entry was read in full on this pass; the earlier version rows
+  record the published release-note URLs without restating content that was not
+  fetched.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

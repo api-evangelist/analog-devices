@@ -1,0 +1,128 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  https://developer.analog.com/documentation,
+  https://developer.analog.com/docs/codefusion-studio/latest/user-guide/developer-tools/cfs-ai-skills/,
+  https://analogdevicesinc.github.io/libiio/main/,
+  grpc/analog-devices-aditof-network.proto
+provider: Analog Devices
+providerId: analog-devices
+description: >-
+  Analog Devices' conformance story is an embedded/silicon one, not a web-API
+  one. There is no OAuth, OIDC, SCIM, OData, FHIR or RFC 9457 surface to
+  assert. What ADI does conform to are the hardware and toolchain standards its
+  software implements — the Linux Industrial I/O ABI, JESD204B/C, Device Tree,
+  Zephyr, ELF, ROS 2 — plus, newly, the open Agent Skills standard.
+standards:
+  - id: linux-iio-abi
+    name: Linux Industrial I/O (IIO) subsystem ABI
+    conforms: true
+    domain_standard: true
+    evidence: >-
+      libiio is "a cross-platform user library to access Industrial Input Output
+      (IIO) devices" and ADI maintains drivers in the upstream Linux kernel IIO
+      framework; the whole libiio object model (Context/Device/Channel/
+      Attribute/Buffer/Trigger) is the kernel IIO ABI surfaced to userspace.
+    evidence_url: https://analogdevicesinc.github.io/libiio/main/
+  - id: jesd204
+    name: JESD204B / JESD204C serial interface for data converters
+    conforms: true
+    domain_standard: true
+    evidence: >-
+      pyadi-jif is published to PyPI as the "Python interface and configurator
+      for ADI JESD Interface Framework" — a clocking and link configurator for
+      the JEDEC JESD204 converter interface standard.
+    evidence_url: https://pypi.org/project/pyadi-jif/
+  - id: agent-skills
+    name: Agent Skills (open skill packaging standard)
+    conforms: true
+    evidence: >-
+      "The skills follow the open Agent Skills standard, so they work across
+      GitHub Copilot, Claude Code, OpenAI Codex, and other supported agents."
+      Two SKILL.md files (cfs-docs, cfs-cli) with the standard frontmatter are
+      published in packages/cfs-skills of the codefusion-studio repository and
+      mirrored verbatim in skills/.
+    evidence_url: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/developer-tools/cfs-ai-skills/
+  - id: protobuf3
+    name: Protocol Buffers version 3
+    conforms: true
+    evidence: >-
+      `syntax = "proto3";` in the published ToF network contract, saved verbatim
+      at grpc/analog-devices-aditof-network.proto.
+    evidence_url: https://github.com/analogdevicesinc/libaditof/blob/main/sdk/src/connections/network/buffer.proto
+  - id: devicetree
+    name: Device Tree (DTS/DTB)
+    conforms: true
+    evidence: >-
+      ADI ships the Analog Attach VS Code extension "for configuring Device Tree
+      files and overlays", a pyadi-dt project, and a `cfsutil device-tree`
+      command group for parsing device tree files.
+    evidence_url: https://developer.analog.com/documentation
+  - id: zephyr
+    name: Zephyr RTOS
+    conforms: true
+    evidence: >-
+      CodeFusion Studio ships Zephyr workspace templates across the MAX32655,
+      MAX32657, MAX32658, MAX32666, MAX32672, MAX32690 and MAX78000 processors,
+      and documents a Zephyr build/flash path.
+    evidence_url: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/2.3.0/
+  - id: ros2
+    name: ROS 2
+    conforms: true
+    evidence: >-
+      ADI publishes the "ADI Ros 2" robotics SDK — "ROS 2 packages and tools in
+      pre-configured container images".
+    evidence_url: https://developer.analog.com/docs/adi-ros2
+  - id: elf
+    name: ELF object format
+    conforms: true
+    evidence: '`cfsutil elf` — ELF Utilities: "Analyze and inspect ELF files".'
+    evidence_url: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/cfsutil/
+  - id: yocto
+    name: Yocto Project / OpenEmbedded
+    conforms: true
+    evidence: >-
+      "ADI DSP Linux — Yocto-based Linux images for ADI Digital Signal
+      Processors" (lnxdsp-adi-meta).
+    evidence_url: https://developer.analog.com/docs/lnxdsp-adi-meta
+  - id: spice
+    name: SPICE netlist / simulation
+    conforms: true
+    domain_standard: true
+    evidence: >-
+      LTspice is a general-purpose SPICE simulator; ADI publishes an llms.txt
+      and an AI reference corpus covering SPICE syntax, circuit elements and dot
+      commands.
+    evidence_url: https://analogdevicesinc.github.io/ltspice-reference/llms.txt
+  - id: oauth2
+    conforms: false
+    evidence: >-
+      No oauth2 securityScheme, no authorization-server metadata document. The
+      myAnalog login is a browser-redirect flow documented in prose only;
+      /.well-known/oauth-authorization-server returned an SPA shell on
+      developer.analog.com and 403 on api.analog.com.
+  - id: openid-connect
+    conforms: false
+    evidence: /.well-known/openid-configuration is not served on any ADI host probed.
+  - id: rfc9457
+    conforms: false
+    evidence: No HTTP API and no application/problem+json surface published.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      No OpenAPI or Swagger document found on any ADI host or in the
+      analogdevicesinc GitHub organization. The only "openapi" hits in the org
+      are generated TypeScript clients (packages/cfs-ccm-lib/.../openapi-client.ts)
+      with no spec file committed alongside them.
+  - id: asyncapi
+    conforms: false
+    evidence: No event/streaming contract published; code search across the org returned 0 hits.
+compliance_certifications: []
+compliance_note: >-
+  No trust center, SOC 2 / ISO 27001 / FedRAMP claim, or security.txt was
+  readable. www.analog.com — where a corporate compliance page would live —
+  resets the connection for non-browser clients, so this is an unread surface
+  rather than a confirmed absence. No Compliance pointer is emitted.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

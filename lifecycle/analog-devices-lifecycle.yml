@@ -1,0 +1,80 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  https://developer.analog.com/docs/codefusion-studio/latest/release-notes/,
+  GitHub Releases API for github.com/analogdevicesinc,
+  https://analogdevicesinc.github.io/libiio/main/
+provider: Analog Devices
+providerId: analog-devices
+description: >-
+  Analog Devices versions its developer software per project, with semantic
+  version tags and per-version documentation trees. There is no single API
+  lifecycle policy, no status page, no published deprecation policy and no SLA
+  — none of which would be expected for locally-installed libraries and an IDE.
+versioning:
+  scheme: semver
+  style: per-project
+  documented: true
+  evidence: >-
+    developer.analog.com/docs/<project>/<version>/ serves a versioned
+    documentation tree per project, with a /latest/ alias; CodeFusion Studio
+    publishes release notes for every release from 1.0.0 through 2.3.0.
+  projects:
+    - name: CodeFusion Studio
+      current: 2.3.0
+      released: '2026-08-14'
+      docs: https://developer.analog.com/docs/codefusion-studio/latest/
+      release_notes: https://developer.analog.com/docs/codefusion-studio/latest/release-notes/
+    - name: libiio
+      current_tag: v0.26
+      released: '2024-09-25'
+      docs: https://analogdevicesinc.github.io/libiio/main/
+      note: >-
+        The documentation site publishes a v1.0 API reference and a "Libiio 0.x
+        to 1.x API update guide", but the newest tagged GitHub release is still
+        v0.26 from 2024-09-25. The 1.x API is documented ahead of any release
+        a consumer can install, and the migration guide is the only versioning
+        policy statement ADI publishes for this library.
+    - name: Scopy
+      current: v2.2.1
+      released: '2026-07-13'
+    - name: no-OS
+      current: last_commit
+      released: '2026-07-02'
+      note: >-
+        Rolling release — the only GitHub release is a moving `last_commit`
+        tag, so downstream firmware pins a commit, not a version.
+    - name: pyadi-iio
+      current: 0.0.21
+      released: '2026-05-26'
+      note: No GitHub releases; versions are published to PyPI only.
+deprecation:
+  policy_published: false
+  sunset_headers: false
+  note: >-
+    No deprecation policy, RFC 8594 Sunset/Deprecation headers, or end-of-life
+    schedule was found for any ADI software surface. The closest published
+    artifact is the libiio 0.x-to-1.x API update guide, which is a migration
+    guide rather than a deprecation policy. No Deprecation pointer is emitted.
+status_page:
+  published: false
+  probed:
+    - host: status.analog.com
+      result: NXDOMAIN
+    - host: status.developer.analog.com
+      result: NXDOMAIN
+  note: >-
+    No status page exists, which is consistent with a product line of locally
+    installed software. No StatusPage pointer is emitted.
+sla:
+  published: false
+  note: No API SLA — ADI's developer software carries open-source licences, not service terms.
+support:
+  community: https://ez.analog.com/
+  note: >-
+    EngineerZone is ADI's community support forum. It is linked from every ADI
+    property but reset the connection for this client (curl exit 92), so it was
+    not read on this pass.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

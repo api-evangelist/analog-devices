@@ -1,0 +1,134 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  https://developer.analog.com/docs/codefusion-studio/latest/user-guide/cfsutil/,
+  .../cfsutil/apikey-auth/, https://analogdevicesinc.github.io/libiio/main/,
+  grpc/analog-devices-aditof-network.proto
+provider: Analog Devices
+providerId: analog-devices
+description: >-
+  Cross-cutting semantics for Analog Devices' developer surfaces. ADI ships
+  local libraries and a CLI, not a hosted HTTP API, so several dimensions that
+  exist to describe request/response behaviour over a network are genuinely
+  not applicable here — they are recorded as `na` with the reason, rather than
+  left blank or scored as failures.
+auth:
+  style: none for the libraries; API key or interactive login for the CFS package surface
+  detail: >-
+    libiio, pyadi-iio and no-OS require no credentials. cfsutil authenticates to
+    myAnalog either interactively (browser redirect) or with an API key passed
+    in the CFS_API_KEY environment variable. See
+    authentication/analog-devices-authentication.yml.
+idempotency:
+  supported: na
+  reason: >-
+    No HTTP write surface, so there is no request to replay and no
+    Idempotency-Key header to honour. cfsutil commands are invoked locally;
+    re-running `cfsutil catalog update` or a package install converges on the
+    same state, but ADI publishes no idempotency contract and none is claimed
+    here. No Idempotency pointer is emitted.
+pagination:
+  supported: na
+  reason: >-
+    Collections are enumerated locally — an IIO context lists its devices and
+    channels in one traversal, `cfsutil socs` and `apikey list` print complete
+    lists. There is no paged network collection.
+field_expansion:
+  supported: na
+metadata:
+  supported: partial
+  detail: >-
+    IIO objects carry arbitrary named attributes (device, channel, buffer and
+    debug attributes) read and written through iio_attr and the libiio
+    attribute functions — the closest thing ADI has to a metadata convention.
+request_id_tracing:
+  supported: na
+  reason: No HTTP surface; cfsutil offers --verbose on the myanalog commands for diagnostics.
+versioning:
+  style: semver, per project, with versioned documentation trees
+  detail: >-
+    developer.analog.com/docs/<project>/<version>/ plus a /latest/ alias.
+    See lifecycle/analog-devices-lifecycle.yml.
+error_envelope:
+  style: protobuf enum (ToF network protocol) / negative errno (libiio)
+  detail: >-
+    ServerResponse carries Status and ServerStatus enums; libiio functions
+    return negative POSIX errno values. See
+    errors/analog-devices-error-codes.yml.
+rate_limit_signaling:
+  supported: na
+  reason: >-
+    Throughput is bounded by the transport and the silicon's sample rate, not
+    by a vendor policy. See rate-limits/analog-devices-rate-limits.yml.
+dry_run_mode:
+  supported: partial
+  grade: documented
+  detail: >-
+    `cfsutil ai compat` analyses whether an AI model is compatible with a target
+    before any build is attempted, and `cfsutil ai profile` reports resource
+    usage — both are rehearsal operations that produce a report rather than
+    changing the workspace. There is no general --dry-run flag documented across
+    the CLI.
+reversibility:
+  applicable: true
+  grade: documented
+  summary: >-
+    Every state-changing surface ADI documents has a named inverse, and the
+    inverses are first-class commands rather than support procedures. What is
+    missing everywhere is a WINDOW: not one of these operations states a time
+    limit inside which the reversal works, which is why this grades `documented`
+    rather than `verified`. Do not read a window into any of these — ADI states
+    none.
+  operations:
+    - action: cfsutil catalog update
+      description: Updates the SoC catalog.
+      reversal: cfsutil catalog restore
+      reversal_description: Restores the SoC catalog to its prior state.
+      window: not stated
+      docs: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/cfsutil/
+    - action: cfsutil myanalog apikey create
+      description: >-
+        Creates an API key. The value is shown exactly once and cannot be
+        retrieved afterwards.
+      reversal: cfsutil myanalog apikey delete <key-id>
+      reversal_description: Permanently deletes the key by its apikey_<id> identifier.
+      window: >-
+        not stated; keys carry an expiration date shown by `apikey list`, but
+        the documentation does not state the default lifetime
+      irreversible_aspect: >-
+        The key VALUE is not recoverable once the create output is lost — that
+        half of the operation cannot be undone, only replaced by creating a new
+        key.
+      docs: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/cfsutil/apikey-auth/
+    - action: cfsutil myanalog login
+      reversal: cfsutil myanalog logout
+      window: not stated
+      docs: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/cfsutil/myanalog-auth/
+    - action: package install (Package Manager / cfsutil)
+      description: Installs SDKs, plugins and toolchains from managed remotes.
+      reversal: uninstall through the same Package Manager surface
+      window: not stated
+      docs: https://developer.analog.com/docs/codefusion-studio/latest/user-guide/installation/package-manager/
+    - action: hardware attribute writes (iio_attr, iio_reg, pyadi-iio setters)
+      description: >-
+        Writes device, channel and debug attributes, and raw registers, on live
+        silicon.
+      reversal: >-
+        Write the previous value back. There is no transactional undo — the
+        caller is responsible for reading and retaining the prior value first.
+      window: na
+      caution: >-
+        iio_reg writes registers directly on the part. A wrong value can put
+        hardware into an unusable state until power cycle or reprogramming, and
+        no reversal operation is published for it. An agent should treat direct
+        register writes as unbounded-consequence actions.
+      docs: https://analogdevicesinc.github.io/libiio/main/
+cross_references:
+  errors: errors/analog-devices-error-codes.yml
+  lifecycle: lifecycle/analog-devices-lifecycle.yml
+  authentication: authentication/analog-devices-authentication.yml
+  rate_limits: rate-limits/analog-devices-rate-limits.yml
+  cli: cli/analog-devices-cli.yml
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com
