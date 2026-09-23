@@ -1,7 +1,9 @@
 ---
 title: Analog Devices to Acquire Empower Semiconductor ...
 url: https://www.prnewswire.com/news-releases/analog-devices-to-acquire-empower-semiconductor-expanding-its-next-generation-high-density-power-portfolio-for-the-ai-era-302776701.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Analog Devices" press release artificial intelligence'
 position: 1
 source: serpapi-google

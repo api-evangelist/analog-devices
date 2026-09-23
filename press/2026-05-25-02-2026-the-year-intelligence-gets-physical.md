@@ -1,7 +1,9 @@
 ---
 title: '2026: The Year Intelligence Gets Physical'
 url: https://www.analog.com/en/newsroom/press-releases/2026/2-9-2026-the-year-intelligence-gets-physical.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Analog Devices" press release artificial intelligence'
 position: 2
 source: serpapi-google

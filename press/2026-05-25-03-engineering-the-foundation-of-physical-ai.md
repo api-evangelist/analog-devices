@@ -1,7 +1,9 @@
 ---
 title: Engineering the Foundation of Physical AI
 url: https://www.analog.com/en/ai.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Analog Devices" press release artificial intelligence'
 position: 3
 source: serpapi-google
