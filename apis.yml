@@ -1,15 +1,22 @@
 aid: analog-devices
 url: https://raw.githubusercontent.com/api-evangelist/analog-devices/refs/heads/main/apis.yml
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - analogdevicesinc/codefusion-studio
+    - analogdevicesinc/libaditof
+    - analogdevicesinc/libiio
+    - analogdevicesinc/pyadi-iio
   open_source: unknown
-  commercial: false
+  commercial: true
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - pricing
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 specificationVersion: '0.23'
 accessModel:
@@ -48,7 +55,7 @@ tags_raw:
   - Fortune 1000
 apis:
   - aid: analog-devices:libiio-api
-    name: Analog Devices libiio API
+    name: Analog Devices Libiio API
     description: The libiio library provides a cross-platform C API for interfacing with Linux Industrial I/O (IIO) devices including ADCs, DACs, and RF transceivers. It supports local and remote device
       access via a network daemon, enabling developers to control ADI hardware from Linux and other host platforms.
     tags:
