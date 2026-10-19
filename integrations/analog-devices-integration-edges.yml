@@ -86,15 +86,52 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-industrial-robotics.py
   first_seen: '2026-10-15'
+- partner_name: PyPI
+  partner: pypi
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (Python)
+  evidence: https://pypi.org/project/pyadi-iio/
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: PyPI (public registry JSON)
+    spec_file: null
+    language: Python
+    packages:
+    - name: pyadi-iio
+      version: 0.0.21
+      released: '2026-05-26'
+      released_field: upload_time
+      lapsed: false
+      page: https://pypi.org/project/pyadi-iio/
+      repo_leg: github-org:analogdevicesinc
+      publisher_leg: email:analog.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 generated: '2026-10-15'
 method: searched
 source:
 - https://opcfoundation.org/products/
 - https://marketplace.odva.org/organizations
 checked:
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
 - https://marketplace.odva.org/organizations
 - https://opcfoundation.org/products/
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
 - https://repo.ros2.org/rosdistro_cache/humble-cache.yaml.gz
 - https://repo.ros2.org/rosdistro_cache/jazzy-cache.yaml.gz
 - https://repo.ros2.org/rosdistro_cache/kilted-cache.yaml.gz
 - https://repo.ros2.org/rosdistro_cache/rolling-cache.yaml.gz
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
