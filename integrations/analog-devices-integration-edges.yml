@@ -1,4 +1,34 @@
 edges:
+- partner_name: PyPI
+  partner: pypi
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (Python)
+  evidence: https://pypi.org/project/pyadi-iio/
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: PyPI (public registry JSON)
+    spec_file: null
+    language: Python
+    packages:
+    - name: pyadi-iio
+      version: 0.0.21
+      released: '2026-05-26'
+      released_field: upload_time
+      lapsed: false
+      page: https://pypi.org/project/pyadi-iio/
+      repo_leg: github-org:analogdevicesinc
+      publisher_leg: email:analog.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 - partner_name: ODVA (CIP / EtherNet/IP)
   partner: null
   partner_match: register
@@ -26,7 +56,7 @@ edges:
     signal_note: certified_products = one entry per TECHNOLOGY with a listed (Declaration of Conformity) product;
       listed_products is context, never read
     detected_by: sweep-industrial-robotics.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-industrial-robotics.py
   first_seen: '2026-10-15'
 - partner_name: ODVA (CIP / EtherNet/IP)
@@ -50,7 +80,7 @@ edges:
     registered_name: Analog Devices
     matched_domain: analog.com
     detected_by: sweep-industrial-robotics.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-industrial-robotics.py
   first_seen: '2026-10-15'
 - partner_name: Open Robotics (ROS package index)
@@ -83,39 +113,103 @@ edges:
     - depth_obstacle_detect_ros_msgs
     signal_note: 'participation only: packages/distros are context, never read'
     detected_by: sweep-industrial-robotics.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-industrial-robotics.py
   first_seen: '2026-10-15'
-- partner_name: PyPI
-  partner: pypi
+- partner_name: Khronos Group conformant products
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://www.khronos.org/conformance/adopters/conformant-companies
+  category: graphics API conformance
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: Khronos Group conformant products + API adopters (khronos.org/conformance/adopters)
+    standard: Khronos conformance
+    spec_file: null
+    role: khronos-conformant-adopter
+    registered_name: Analog Devices
+    register_id: https://www.khronos.org/conformance/adopters/conformant-companies
+    matched_domain: analog.com
+    matched_by: domain
+    certified_products:
+    - product: OpenGL ES
+      lapsed: false
+      newest_submission: null
+      versions: []
+      submissions_listed: 0
+    products_sample: []
+    signal_note: certified_products = one entry per Khronos API the company is a conformant adopter of (the API
+      Adopters page), never per submission or product; dates, versions and submission counts are context. Khronos
+      marks no conformance as superseded or lapsed, so lapsed is false
+    detected_by: sweep-xr-graphics.py
+    detected: '2026-10-20'
+  detected_by: sweep-xr-graphics.py
+  first_seen: '2026-10-20'
+- partner_name: Agent Skills (own GitHub org)
+  partner: null
   partner_match: register
   type: register
   direction: provider-built
-  category: official SDK (Python)
-  evidence: https://pypi.org/project/pyadi-iio/
-  channel: package-registry
-  relationship: distribution-channel
-  contract_reference:
-    register: PyPI (public registry JSON)
-    spec_file: null
-    language: Python
-    packages:
-    - name: pyadi-iio
-      version: 0.0.21
-      released: '2026-05-26'
-      released_field: upload_time
-      lapsed: false
-      page: https://pypi.org/project/pyadi-iio/
-      repo_leg: github-org:analogdevicesinc
-      publisher_leg: email:analog.com
-      matched_by: domain
+  category: Agent Skills package
+  evidence: https://github.com/analogdevicesinc/codefusion-studio
+  channel: provider-built
+  relationship: compatible
+  shape: agent-skills
+  evidence_kind: own-repo
+  degree: skill-repo
+  report_only: true
+  agent_skills:
+    org: analogdevicesinc
     current: true
-    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
-      24 months'
-    detected_by: sweep-official-sdks.py
-    detected: '2026-10-18'
-  detected_by: sweep-official-sdks.py
-  first_seen: '2026-10-18'
+    repos:
+    - repo: analogdevicesinc/codefusion-studio
+      archived: false
+      lapsed: false
+      pushed: '2026-08-14'
+  contract_reference:
+    register: 'provider''s own GitHub org (GitHub REST API: repo + git tree holds SKILL.md)'
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-repo
+    matched_org: analogdevicesinc
+    matched_by: org-profile-domain:analog.com
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  detected_by: sweep-agent-skills.py
+  first_seen: '2026-10-20'
+- partner_name: SkillsMP (skillsmp.com)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  category: Agent Skills register
+  evidence: https://skillsmp.com/creators/analogdevicesinc
+  channel: standard-directory
+  relationship: compatible
+  shape: agent-skills
+  evidence_kind: register-listing
+  degree: listed
+  report_only: true
+  agent_skills_register:
+    repos:
+    - analogdevicesinc
+    repo_verified: false
+    signal_note: the provider's own-org repos the register lists; skill / install counts never read
+  contract_reference:
+    register: SkillsMP (skillsmp.com) (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: analogdevicesinc
+    matched_by: org-profile-domain:analog.com
+    sample_skills: []
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  detected_by: sweep-agent-skills.py
+  first_seen: '2026-10-20'
 generated: '2026-10-15'
 method: searched
 source:
@@ -135,3 +229,14 @@ checked:
 - https://repo.ros2.org/rosdistro_cache/rolling-cache.yaml.gz
 - https://repo1.maven.org/maven2
 - https://rubygems.org/api/v1
+- https://landscape.aousd.org/data/full.json
+- https://www.khronos.org/conformance/adopters/conformant-companies
+- https://www.khronos.org/conformance/adopters/conformant-products
+- https://www.khronos.org/conformance/adopters/file-format-adopters
+- https://www.khronos.org/members/list
+- https://api.github.com
+- https://claude-plugins.dev/sitemap.xml
+- https://github.com/VoltAgent/awesome-agent-skills
+- https://officialskills.sh/sitemap.xml
+- https://skillsmp.com/sitemap.xml
+- https://www.skills.sh/sitemap.xml
