@@ -170,3 +170,65 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
+- slug: analog-devices-risc-v-international-members
+  label: RISC-V International (members)
+  partner_name: RISC-V International (members)
+  category: processor ISA standards body membership
+  type: register
+  channel: standard-directory
+  evidence: https://riscv.org/members/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: RISC-V International members (riscv.org/members; riscv.landscape2.io/data/full.json)
+    standard: RISC-V ISA
+    spec_file: null
+    role: risc-v-member
+    registered_name: Analog Devices, Inc.
+    register_id: risc-v-members--strategic--analog-devices-inc-member
+    matched_domain: analog.com
+    matched_by: domain
+    signal_note: 'participation only: membership level is partner_tier, never counted'
+    detected_by: sweep-semiconductor-consortia.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
+- slug: analog-devices-chips-for-america-award-recipients
+  label: CHIPS for America (award recipients)
+  partner_name: CHIPS for America (award recipients)
+  category: semiconductor funding award
+  type: register
+  channel: regulator-register
+  evidence: https://www.nist.gov/chips/chips-program-office-awards
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: 'CHIPS for America award recipients (nist.gov/chips: Program Office + R&D Office awards)'
+    standard: CHIPS and Science Act
+    spec_file: null
+    role: chips-award-recipient
+    registered_name: Analog Devices Inc.
+    register_id: https://www.nist.gov/chips/chips-program-office-awards
+    matched_domain: analog.com
+    matched_by: domain
+    awards:
+    - office: CHIPS Program Office
+      site: Beaverton, OR
+      amount: up to $105 million in proposed funding (split across Chelmsford, MA,  Beaverton, OR, and Camas, WA)
+      status: proposed
+    - office: CHIPS Program Office
+      site: Camas, WA
+      amount: up to $105 million in proposed funding (split across Chelmsford, MA,  Beaverton, OR, and Camas, WA)
+      status: proposed
+    - office: CHIPS Program Office
+      site: Chelmsford, MA
+      amount: up to $105 million in proposed funding (split across Chelmsford, MA; Beaverton, OR, and Camas, WA)
+      status: proposed
+    signal_note: 'participation only: a federal funding award (manufacturing incentive or R&D), not conformance;
+      award count and amounts are context, never counted'
+    detected_by: sweep-semiconductor-consortia.py
+    detected: '2026-10-21'
+    identity: wikidata Q484930 'Analog Devices' P856 https://www.analog.com/
+    identity_source: wikidata P856 (register gives names only; labelled provenance step)
+  status: not-a-workflow
+  arazzo: null
