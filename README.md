@@ -1,4 +1,4 @@
-# Analog Devices (analog-devices)
+# Analog Devices
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,133 +66,138 @@
 
 Analog Devices (ADI) is a global semiconductor company designing high-performance analog, mixed-signal, and digital signal processing integrated circuits for industrial, communications, automotive, and consumer markets. ADI provides developer tools through its CodeFusion Studio embedded development environment and the ADI Developer Portal. ADI's APIs are primarily embedded software APIs for microcontrollers and DSPs via the libiio library for Linux Industrial I/O devices, pyadi-iio Python interfaces, and security APIs within the ADI Assure Trusted Edge Security Architecture. The company also maintains the no-OS driver library for bare-metal embedded systems.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/analog-devices/refs/heads/main/apis.yml)
+**Areas:** Embedded Systems · Hardware · IoT · Semiconductors · Signal Processing · Fortune 1000
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Analog Devices on APIs.io
 
-## Tags:
+Everything profiled for Analog Devices is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/analog-devices/](https://apis.io/providers/analog-devices/)** — or go straight to one of the APIs or properties below.
 
- - Embedded Systems, Hardware, IoT, Semiconductor, Signal Processing
+### APIs (4)
 
-## Timestamps
+- [Analog Devices Libiio API](https://apis.io/apis/analog-devices/libiio-api/) — The libiio library provides a cross-platform C API for interfacing with Linux Industrial I/O (IIO) devices including ADCs, DACs, and RF transceivers. It…
+- [Analog Devices PyADI-IIO Python API](https://apis.io/apis/analog-devices/pyadi-iio-api/) — PyADI-IIO provides Python interfaces for ADI hardware with IIO drivers, enabling Python developers to interact with ADI evaluation boards and production…
+- [Analog Devices CodeFusion Studio](https://apis.io/apis/analog-devices/codefusion-studio/) — CodeFusion Studio is ADI's embedded software development environment built on Visual Studio Code for ADI microcontrollers and DSPs. It provides graphical…
+- [Analog Devices 3D Time-of-Flight SDK](https://apis.io/apis/analog-devices/aditof-sdk/) — The ADI 3D Time-of-Flight SDK (libaditof, and the ADCAM application layer built on it) drives ADI depth cameras from a host. Its network connection is…
 
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Analog Devices libiio API
-The libiio library provides a cross-platform C API for interfacing with Linux Industrial I/O (IIO) devices including ADCs, DACs, and RF transceivers. It supports local and remote device access via a network daemon, enabling developers to control ADI hardware from Linux and other host platforms.
+#### JSON Schema (2)
 
-**Human URL:** [https://analogdevicesinc.github.io/libiio/](https://analogdevicesinc.github.io/libiio/)
+The data models the API reads and writes.
 
-#### Tags:
+- [IIOContext](https://apis.io/schemas/analog-devices/analog-devices-iio-context/)
+- [IIODevice](https://apis.io/schemas/analog-devices/analog-devices-iio-device/)
 
- - Embedded Systems, Hardware Interface, IIO, Linux, Signal Processing
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://analogdevicesinc.github.io/libiio/)
-- [GitHubRepository](https://github.com/analogdevicesinc/libiio)
+- [Analog Devices Context](https://apis.io/jsonld/analog-devices/analog-devices-context/)
 
-### Analog Devices PyADI-IIO Python API
-PyADI-IIO provides Python interfaces for ADI hardware with IIO drivers, enabling Python developers to interact with ADI evaluation boards and production hardware. It abstracts libiio with device-specific high-level interfaces for transceivers, converters, and sensors.
+#### Vocabulary (1)
 
-**Human URL:** [https://analogdevicesinc.github.io/pyadi-iio/](https://analogdevicesinc.github.io/pyadi-iio/)
+The provider's domain terms, defined.
 
-#### Tags:
+- [Analog Devices Vocabulary](https://apis.io/vocabularies/analog-devices/analog-devices-vocabulary/)
 
- - ADC, Embedded Systems, Hardware, Python, RF
+#### Governance rules (2)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://analogdevicesinc.github.io/pyadi-iio/)
-- [GitHubRepository](https://github.com/analogdevicesinc/pyadi-iio)
-- [SDK](https://pypi.org/project/pyadi-iio/)
+- [Analog Devices — jsonschema rules](https://apis.io/rules/analog-devices/analog-devices-jsonschema-spectral-rules/)
+- [Analog Devices API Rules](https://apis.io/rules/analog-devices/analog-devices-spectral-rules/)
 
-### Analog Devices CodeFusion Studio
-CodeFusion Studio is ADI's embedded software development environment built on Visual Studio Code for ADI microcontrollers and DSPs. It provides graphical system configuration, code generation, debugging, and security APIs for the ADI Assure Trusted Edge Security Architecture. Initially supports MAX32690 and ADSP-SC5xx processor families.
+#### Security (2)
 
-**Human URL:** [https://developer.analog.com/solutions/codefusionstudio](https://developer.analog.com/solutions/codefusionstudio)
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags:
+- [Analog Devices Authentication](https://apis.io/security/analog-devices/analog-devices-authentication/)
+- [Analog Devices Domain Security](https://apis.io/security/analog-devices/analog-devices-domain-security/)
 
- - Embedded Development, IDE, Microcontrollers, Security, VSCode
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://developer.analog.com/solutions/codefusionstudio)
-- [APIReference](https://developer.analog.com/docs/codefusion-studio/1.0.2/)
-- [GitHubRepository](https://github.com/analogdevicesinc/codefusion-studio)
-- [SDK](https://marketplace.visualstudio.com/items?itemName=AnalogDevices.cfs-ide)
+- [Analog Devices Plans Pricing](https://apis.io/plans/analog-devices/analog-devices-plans-pricing/)
 
-## Common Properties
+#### Rate limits (1)
 
-- [Portal](https://www.analog.com)
-- [DeveloperPortal](https://developer.analog.com)
+Published request limits.
+
+- [Analog Devices Rate Limits](https://apis.io/rate-limits/analog-devices/analog-devices-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Analog Devices Finops](https://apis.io/finops/analog-devices/analog-devices-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.analog.com/)
 - [Documentation](https://www.analog.com/en/software.html)
-- [GitHubOrganization](https://github.com/analogdevicesinc)
-- [Blog](https://www.analog.com/en/resources/media-center/analog-dialogue.html)
+- [Getting started](https://developer.analog.com/documentation)
+- [API reference](https://developer.analog.com/docs/codefusion-studio/latest/)
 - [Support](https://ez.analog.com/)
-- [JSONSchema](json-schema/analog-devices-iio-device-schema.json)
-- [JSONSchema](json-schema/analog-devices-iio-context-schema.json)
-- [JSONLD](json-ld/analog-devices-context.jsonld)
-- [Vocabulary](vocabulary/analog-devices-vocabulary.yaml)
-- [SpectralRules](rules/analog-devices-spectral-rules.yml)
+- [Blog](https://www.analog.com/en/resources/analog-dialogue.html)
+- [Privacy policy](https://www.analog.com/en/who-we-are/legal-and-risk-oversight/data-privacy/privacy-policy.html)
+- [GitHub](https://github.com/analogdevicesinc)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Linux IIO Interface | libiio library for accessing Linux Industrial I/O devices over USB, network, and local interfaces. |
-| Python Hardware Interfaces | PyADI-IIO provides Pythonic device-specific APIs for ADI transceivers, converters, and sensors. |
-| Embedded Security APIs | ADI Assure security APIs for hardware root of trust, secure boot, and cryptographic operations. |
-| No-OS Drivers | Bare-metal C drivers for ADI ICs without requiring an operating system. |
-| CodeFusion Studio | VS Code-based IDE for ADI MCUs and DSPs with graphical configuration and code generation. |
-| Open Source Ecosystem | Active contributor to Linux kernel IIO subsystem, Zephyr RTOS, and other open source projects. |
+**Kin Score 40.3** — developing · rubric 0.25.0 · scored 2026-10-23
 
-## UseCases
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 34.7 |
+| Contract governance | 41.7 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 65.5 |
+| Access clarity | 10.5 |
 
-| Name | Description |
-|------|-------------|
-| Precision Measurement | High-accuracy data acquisition from ADI ADCs and sensors using libiio or PyADI-IIO. |
-| RF and Communications | Control of RF transceivers like ADRV9002 and AD9361 for SDR and communications applications. |
-| Industrial Automation | Integration of ADI industrial ICs into factory automation and process control systems. |
-| Secure IoT Devices | Building secure edge devices with hardware root of trust using ADI Assure security APIs. |
-| Motor Control | Developing motor drive applications using ADI ADSP processors and evaluation kits. |
+**Agent readiness 20.4** — agent-aware
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
 
-| Name | Description |
-|------|-------------|
-| Linux Kernel IIO Subsystem | ADI actively contributes drivers to the Linux kernel IIO framework. |
-| Zephyr RTOS | ADI maintains hardware support for ADI MCUs in the Zephyr real-time operating system. |
-| GNU Radio | Integration with GNU Radio for software-defined radio applications using ADI transceivers. |
-| MATLAB/Simulink | MathWorks toolbox support for ADI hardware for signal processing prototyping. |
-| Microsoft Visual Studio Code | CodeFusion Studio is built as a VS Code extension for embedded development. |
+**Regulatory alignment 18.6** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/analog-devices/](https://apis.io/providers/analog-devices/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### JSON Schema
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [Analog Devices Iio Context Schema](json-schema/analog-devices-iio-context-schema.json)
-- [Analog Devices Iio Device Schema](json-schema/analog-devices-iio-device-schema.json)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Analog Devices: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON-LD
+## Open an issue
 
-- [Analog Devices Context](json-ld/analog-devices-context.jsonld)
-
-## Vocabulary
-
-- [Analog Devices Vocabulary](vocabulary/analog-devices-vocabulary.yaml) — Taxonomy for ADI APIs covering IIO devices, embedded SDKs, and hardware interfaces
-
-## Rules
-
-- [Analog Devices Spectral Rules](rules/analog-devices-spectral-rules.yml) — Rules enforcing Analog Devices API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/analog-devices/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
