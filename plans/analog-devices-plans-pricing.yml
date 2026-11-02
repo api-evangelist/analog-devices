@@ -1,0 +1,90 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Analog Devices
+providerId: analog-devices
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: generated
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - Embedded Systems
+  - Hardware
+  - Semiconductors
+  - Open Source
+description: >-
+  Analog Devices' developer surface is delivered as open-source embedded
+  software (libiio, pyadi-iio, no-OS drivers) and free downloadable tools
+  (CodeFusion Studio). There is no metered API tier, no plan subscription, and
+  no per-request fee. Commercial value flows through purchase of ADI silicon
+  and evaluation hardware; the software APIs themselves are free under
+  permissive open-source licenses.
+notes: >-
+  ADI does not run a developer SaaS API with paid tiers. The plan below records
+  the de-facto offering (free open-source SDKs bundled with hardware
+  purchase). Hardware part pricing is quoted via distributors (Digi-Key,
+  Mouser, Arrow) and direct sales, not as an API charge.
+sources:
+  - https://www.analog.com
+  - https://github.com/analogdevicesinc/libiio
+  - https://wiki.analog.com/resources/tools-software/linux-software/libiio
+  - https://github.com/analogdevicesinc/codefusion-studio
+plans:
+  - id: analog-devices-open-source-sdk
+    name: Open-Source Embedded SDK
+    type: freemium
+    description: >-
+      libiio, pyadi-iio, no-OS, and CodeFusion Studio are distributed as
+      open-source software. Free to download, build, and ship; commercial value
+      is in the underlying ADI silicon and evaluation boards.
+    entries:
+      - label: SDK Download
+        description: libiio / pyadi-iio / no-OS / CodeFusion Studio
+        name: sdk_download
+        type: flat
+        metric: download
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+      - label: Hardware Purchase
+        description: Underlying ADI silicon and evaluation boards (priced separately by distributor)
+        name: hardware_purchase
+        type: flat
+        metric: device
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'see distributor (Digi-Key / Mouser / Arrow / direct sales)'
+        userMultiplied: false
+    elements:
+      - name: libiio C/C++ API
+      - name: pyadi-iio Python Bindings
+      - name: no-OS Bare-Metal Drivers
+      - name: CodeFusion Studio IDE
+      - name: Community Forum (EngineerZone)
+      - name: Open-Source License (LGPL / BSD per package)
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - object
+  plans:
+  - name: Open-Source Embedded SDK
+    access: freemium
+    model: subscription
+    model_how: derived
+    units:
+    - object
+    periods:
+    - per-use
